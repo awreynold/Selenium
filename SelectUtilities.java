@@ -1,13 +1,15 @@
-package selectInteractions;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
 public class SelectUtilities {
 
+	/**
+	*converts the passed in WebElement object to a Select object
+	*@param element -> WebElement
+	*/
+	public static Select convertToSelectObject(WebElement element){
+		return new Select(element);
+	}
+	
+	
+	
 	/**
 	 * selects an option from a listbox select element
 	 * @param listBox Select object that represents the listBox on the page
