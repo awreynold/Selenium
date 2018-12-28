@@ -33,4 +33,64 @@ public static WebElement safeFindElementByXpathWithParent(WebElement parent, Sti
   }catch(Exception ex){
     return null;
   }
+  
+  public static WebElement safeFindElementByID(WebDriver driver, String id){
+    if(id.isEmpty() || driver == null)
+      return null;
+    try{
+      return driver.findElement(By.id(id));
+    }catch(Exception ex){
+      return null;
+    }
+  }
+  
+  public static WebElement safeFindElementByIDWithParent(WebElement parent, String id){
+    if(id.isEmpty() || parent == null)
+      return null;
+    try{
+      return parent.findElement(By.id(id));
+    }catch(Exception ex){
+      return null;
+    }
+  }
+  
+  public static WebElement safeFindElementByClassName(WebDriver driver, String className){
+    if(className.isEmpty() || driver == null)
+      return null;
+    try{
+      return driver.findElement(By.className(className));
+    }catch(Exception ex){
+      return null;
+    }
+  }
+  
+  public static WebElement safeFindElementByClassNameWithParent(WebElement parent, String className){
+    if(className.isEmpty() || parent == null)
+      return null;
+    try{
+      return parent.findElement(By.className(className));
+    }catch(Exception ex){
+      return null;
+    }
+  }
+  
+  public static WebElement safeFindElementByCSS(WebDriver driver, String css){
+    if(css.isEmpty() || driver == null)
+      return null;
+    try{
+      return driver.findElement(By.cssSelector(css));
+    }catch(Exception ex){
+      return null;
+    }
+  }
+  
+  public static WebElement safeFindElementByCSSWithParent(WebElement parent, String css){
+    if(css.isEmpty() || parent == null)
+      return null;
+    try{
+      return parent.findElement(By.cssSelector(css));
+    }catch(Exception ex){
+      return null;
+    }
+  }
 }
