@@ -7,7 +7,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class BrowserUtil {
+public class BrowserUtilities {
 
 	/**
 	 * gets the browser name associated with the driver to show what browser is currently being used
@@ -69,5 +69,52 @@ public class BrowserUtil {
 		}
 		
 		return verified;
+	}
+	
+		/**
+	 * handles switching to a different browser window or tab. 
+	 * only works when there are 2 windows and you want to switch from the current one to the other one
+	 * @param driver WebDriver currently being used
+	 * @param winHandle String representation of the window handle of the currently being used window
+	 * @throws Exception 
+	 */
+	public void switchWindowToNewWindow(WebDriver driver, String winHandle) throws Exception {
+		Set<String> windows = driver.getWindowHandles();
+		Boolean found = false;
+		
+		for(String window : windows) {
+			if(!window.equals(winHandle)) {
+				driver.switchTo().window(window);
+				found = true;
+				break;
+			}
+		}
+		
+		if(!found) {
+			throw new Exception("Window handle not found.");
+		}
+	}
+	
+	/**
+	 * handles switching to a different browser window or tab based on the windowTitle value being passed in.
+	 * @param driver WebDriver currently being used
+	 * @param windowTitle String representation of the driver's title value to be compared against
+	 * @throws Exception if the windowTitle value was not found in the list of window titles then this exception is thrown
+	 */
+	public void switchWindowBasedOnWindowTitle(WebDriver driver, String windowTitle) throws Exception {
+		Set<String> windows = driver.getWindowHandles();
+		Boolean found = false;
+		
+		for(String window : windows) {
+			driver.switchTo().window(window);
+			if(windowTitle.equals(driver.getTitle())) {
+				found = true;
+				break;
+			}
+		}
+		
+		if(!found) {
+			throw new Exception("Window title not found.");
+		}
 	}
 }
