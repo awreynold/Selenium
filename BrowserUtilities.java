@@ -71,7 +71,7 @@ public class BrowserUtilities {
 		return verified;
 	}
 	
-		/**
+	/**
 	 * handles switching to a different browser window or tab. 
 	 * only works when there are 2 windows and you want to switch from the current one to the other one
 	 * @param driver WebDriver currently being used
